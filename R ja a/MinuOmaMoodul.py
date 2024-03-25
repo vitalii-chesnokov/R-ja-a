@@ -21,11 +21,11 @@ def registeerimine(kasutajad:list, paroolid:list)->any:
                     for p in parool_list:
                         if p in punctuation:
                              flag_p=True
-                        elif p in ascii_lowercase:
+                        elif p in digits:
                             flag_l=True
                         elif p in ascii_lowercase:
                              flag_u=True
-                        elif p in ascii_lowercase:
+                        elif p in ascii_uppercase:
                             flag_d=True
                     if flag_p and flag_u and flag_l and flag_d:
                         kasutajad.uppend(nimi)
@@ -48,7 +48,7 @@ def autoriseerimine(kasutajad:list, paroolid:list):
     p=0
     while True:
         nimi=input("Sisesta kasutajanimi: ")
-        if nimi not in kasutajad:
+        if nimi in kasutajad:
             while True:
                 parool=input("Sisesta salasõna: ")
                 p+=1
@@ -87,7 +87,7 @@ def loe_failist(fail:str)->list:
 def kirjuta_failisse(fail:str,järjend=[]):
     """Salvestame tekst failisse
     """
-    n=int(input("Mitu: ")
+    n=int(input("Mitu: "))
     for i in range(n):
         järjend.append(input(f"{i+1}. sõna "))
     f=open(fail,'a',encoding="utf-8")
